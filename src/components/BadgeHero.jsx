@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function BadgeHero({title}) {
+export default function BadgeHero({ title }) {
   return (
     <div>
-      <div className="flex flex-row justify-center items-center gap-2 border px-4 py-1 border-blue-400 rounded-full bg-blue-200 w-fit">
-        <img src="/vite.svg" alt="" className="w-5" />
-        <h1 className="text-blue-500 text-lg">{title}</h1>
+      <div className="flex flex-row items-center gap-2 rounded-full border border-blue-600 bg-blue-50 px-4 py-2 w-fit shadow-sm">
+        <img src="/vite.svg" alt="" className="w-5 h-5" />
+        <span className="text-blue-700 text-sm font-semibold">{title}</span>
       </div>
     </div>
   );
