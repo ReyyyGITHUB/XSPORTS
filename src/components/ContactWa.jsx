@@ -1,7 +1,7 @@
 import React from "react";
+import { MessageCircle } from "lucide-react";
 
 export default function ContactWa({
-  image = "/vite.svg",
   subtitle = "Tanyakan stok atau konsultasi produk langsung dengan admin.",
   phone = "6285799799857",
   message = "Halo saya mau konsul",
@@ -13,7 +13,7 @@ export default function ContactWa({
       <div className="flex flex-col md:flex-row md:items-center gap-4 rounded-2xl border border-[#25D366] px-5 py-4 text-[#0f8f6a] shadow-lg bg-white">
         {/* image */}
         <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#25D366] bg-white shadow-sm">
-          <img src={image} alt="WhatsApp" className="h-8 w-8" />
+          <MessageCircle className="h-8 w-8 text-[#25D366]" />
         </div>
         {/* container text */}
         <div className="flex flex-col gap-2 w-full">

@@ -46,7 +46,7 @@ export default function TestimoniSection({
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {testimonials.map((item, idx) => (
             <Reveal key={`${item.name}-${item.role}`} delay={idx * 80}>
-              <article className="flex h-full flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <article className="flex h-full flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md">
                 <div className="text-3xl text-blue-500 leading-none">"</div>
                 <p className="text-sm leading-relaxed text-gray-700">
                   {item.message}

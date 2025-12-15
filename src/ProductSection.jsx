@@ -4,7 +4,10 @@ import CardProduct, { products } from "./components/CardProduct";
 import CategoryButton from "./components/CategoryButton";
 import Reveal from "./components/Reveal";
 
-export default function ProductSection({ selectedCategory = "Semua", searchTerm = "" }) {
+export default function ProductSection({
+  selectedCategory = "Semua",
+  searchTerm = "",
+}) {
   const [activeCategory, setActiveCategory] = useState(selectedCategory);
   const [term, setTerm] = useState(searchTerm);
 
@@ -27,7 +30,8 @@ export default function ProductSection({ selectedCategory = "Semua", searchTerm 
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
-      const matchCat = activeCategory === "Semua" || p.category === activeCategory;
+      const matchCat =
+        activeCategory === "Semua" || p.category === activeCategory;
       const matchTerm =
         term.trim() === "" ||
         p.title.toLowerCase().includes(term.toLowerCase()) ||
@@ -49,7 +53,7 @@ export default function ProductSection({ selectedCategory = "Semua", searchTerm 
         </div>
 
         <div className="flex w-full items-center gap-2 justify-start sm:justify-center overflow-x-auto pb-2">
-          {categories.map((cat, idx) => (
+          {categories.map((cat) => (
             <div key={cat} className="w-auto min-w-[140px] flex-shrink-0">
               <CategoryButton
                 label={cat}

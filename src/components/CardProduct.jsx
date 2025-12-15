@@ -1,9 +1,9 @@
 import React from "react";
 import ButtonMain from "./ButtonMain";
+import { ShoppingBag } from "lucide-react";
 
 export const products = [
   {
-    image: "/vite.svg",
     title: "ProSpeed Bola Elite FG",
     price: "Rp 899.000",
     rating: "4.8",
@@ -14,7 +14,6 @@ export const products = [
     category: "Sepatu Bola",
   },
   {
-    image: "/vite.svg",
     title: "StreetFutsal Grip IC",
     price: "Rp 599.000",
     rating: "4.7",
@@ -25,7 +24,6 @@ export const products = [
     category: "Futsal",
   },
   {
-    image: "/vite.svg",
     title: "RunFlow Tempo",
     price: "Rp 749.000",
     rating: "4.6",
@@ -36,7 +34,6 @@ export const products = [
     category: "Running",
   },
   {
-    image: "/vite.svg",
     title: "Classic Court Low",
     price: "Rp 499.000",
     rating: "4.5",
@@ -47,7 +44,6 @@ export const products = [
     category: "Casual",
   },
   {
-    image: "/vite.svg",
     title: "AeroKnit Running Pro",
     price: "Rp 1.199.000",
     rating: "4.9",
@@ -58,7 +54,6 @@ export const products = [
     category: "Running",
   },
   {
-    image: "/vite.svg",
     title: "Futsal Control Max",
     price: "Rp 649.000",
     rating: "4.7",
@@ -77,7 +72,6 @@ const badgeStyles = {
 };
 
 export default function CardProduct({
-  image = "/vite.svg",
   title = "ProSpeed Bola Elite FG",
   price = "Rp 899.000",
   rating = "4.8",
@@ -85,9 +79,10 @@ export default function CardProduct({
   sizes = ["41", "42", "43", "44"],
   badgeText = "Diskon",
   badgeTone = "red",
+  image,
 }) {
   return (
-    <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:border-blue-500 hover:shadow-md">
       <div
         className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold shadow-sm ${
           badgeStyles[badgeTone] || badgeStyles.red
@@ -96,8 +91,14 @@ export default function CardProduct({
         {badgeText}
       </div>
 
-      <div className="relative w-full overflow-hidden bg-gray-50">
-        <img src={image} alt={title} className="h-48 w-full object-cover" />
+      <div className="relative w-full overflow-hidden bg-gray-50 flex items-center justify-center h-48">
+        {image ? (
+          <img src={image} alt={title} className="h-full w-full object-cover" />
+        ) : (
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+            <ShoppingBag className="h-10 w-10" />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-3 px-4 py-4">

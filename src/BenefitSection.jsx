@@ -3,38 +3,46 @@ import BadgeHero from "./components/BadgeHero";
 import CardBenefit from "./components/CardBenefit";
 import ContactWa from "./components/ContactWa";
 import Reveal from "./components/Reveal";
+import {
+  Layers,
+  BadgePercent,
+  ShieldCheck,
+  Truck,
+  Store,
+  Headset,
+} from "lucide-react";
 
 export default function BenefitSection() {
   const benefits = [
     {
-      image: "/vite.svg",
       title: "Pilihan Lengkap",
       desc: "Bola, futsal, running, sampai casual. Koleksi update tiap minggu.",
+      icon: Layers,
     },
     {
-      image: "/vite.svg",
       title: "Harga Masuk Akal",
       desc: "Promo dan diskon rutin, harga aman buat dompet anak muda.",
+      icon: BadgePercent,
     },
     {
-      image: "/vite.svg",
       title: "Aman & Terpercaya",
       desc: "Pembayaran aman, produk original, retur mudah jika ada kendala.",
+      icon: ShieldCheck,
     },
     {
-      image: "/vite.svg",
       title: "Cepat Sampai",
       desc: "Estimasi pengiriman jelas, opsi same-day untuk area Semarang.",
+      icon: Truck,
     },
     {
-      image: "/vite.svg",
       title: "Bisa Ambil di Toko",
       desc: "Ambil langsung di store kalau buru-buru butuh sepatu.",
+      icon: Store,
     },
     {
-      image: "/vite.svg",
       title: "CS Responsif",
       desc: "Bantu pilih size & rekomendasi model sesuai kebutuhanmu.",
+      icon: Headset,
     },
   ];
 
@@ -48,7 +56,8 @@ export default function BenefitSection() {
             <span className="text-blue-600 font-semibold">XSPORTS?</span>
           </h1>
           <p className="text-sm text-gray-700 max-w-2xl">
-            Marketplace sepatu original dengan layanan cepat, stok lengkap, dan tim yang siap bantu pilih size terbaik.
+            Marketplace sepatu original dengan layanan cepat, stok lengkap, dan
+            tim yang siap bantu pilih size terbaik.
           </p>
         </div>
 
@@ -61,18 +70,25 @@ export default function BenefitSection() {
                 direction={idx % 2 === 0 ? "left" : "right"}
                 delay={idx * 40}
               >
-                <CardBenefit image={item.image} title={item.title} desc={item.desc} />
+                <CardBenefit
+                  icon={item.icon}
+                  title={item.title}
+                  desc={item.desc}
+                />
               </Reveal>
             ))}
           </div>
         </div>
 
         <div className="mt-8 w-full">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-5 shadow-sm">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-5 shadow-sm transition hover:border-blue-400">
             <Reveal className="flex-1" direction="left">
-              <h3 className="text-lg font-semibold text-gray-900">Butuh rekomendasi size?</h3>
+              <h3 className="text-lg font-semibold text-gray-900">
+                Butuh rekomendasi size?
+              </h3>
               <p className="text-sm text-gray-700">
-                Konsultasi langsung dengan admin sebelum checkout biar ukuran pas.
+                Konsultasi langsung dengan admin sebelum checkout biar ukuran
+                pas.
               </p>
             </Reveal>
             <Reveal className="w-full md:w-auto" direction="right">

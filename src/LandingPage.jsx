@@ -38,7 +38,7 @@ export default function LandingPage() {
         className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white pt-28 pb-16 px-4"
       >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/hero-pattern.png')] bg-cover bg-center opacity-20 mix-blend-screen" />
+          <div className="absolute inset-0 bg-[url('/assets/images/hero-pattern.png')] bg-cover bg-center opacity-20 mix-blend-screen" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_25%),radial-gradient(circle_at_80%_0%,rgba(16,185,129,0.08),transparent_25%)]" />
         </div>
         <section className="relative overflow-hidden">
