@@ -10,10 +10,14 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-20 bg-white/90 backdrop-blur shadow-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gray-900 to-gray-700 text-white font-bold">
-            KM
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 overflow-hidden">
+            <img
+              src="/assets/images/logo.png"
+              alt="XSPORTS logo"
+              className="h-full w-full object-contain"
+            />
           </div>
-          <span className="text-xl font-bold text-gray-900">XSPORTS</span>
+          <span className="text-xl font-semibold text-gray-900">XSPORTS</span>
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
@@ -26,7 +30,10 @@ export default function Navbar() {
           <a href="#products" className="hover:text-blue-600 transition-colors">
             Produk
           </a>
-          <a href="#testimoni" className="hover:text-blue-600 transition-colors">
+          <a
+            href="#testimoni"
+            className="hover:text-blue-600 transition-colors"
+          >
             Testimoni
           </a>
           <a href="#lokasi" className="hover:text-blue-600 transition-colors">
@@ -61,19 +68,39 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-white/95 backdrop-blur shadow-lg border-t border-gray-100">
           <nav className="flex flex-col gap-3 px-6 py-4 text-sm font-medium text-gray-800">
-            <a href="#home" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+            <a
+              href="#home"
+              className="hover:text-blue-600 transition-colors"
+              onClick={closeMenu}
+            >
               Home
             </a>
-            <a href="#benefits" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+            <a
+              href="#benefits"
+              className="hover:text-blue-600 transition-colors"
+              onClick={closeMenu}
+            >
               Kenapa Kami
             </a>
-            <a href="#products" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+            <a
+              href="#products"
+              className="hover:text-blue-600 transition-colors"
+              onClick={closeMenu}
+            >
               Produk
             </a>
-            <a href="#testimoni" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+            <a
+              href="#testimoni"
+              className="hover:text-blue-600 transition-colors"
+              onClick={closeMenu}
+            >
               Testimoni
             </a>
-            <a href="#lokasi" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+            <a
+              href="#lokasi"
+              className="hover:text-blue-600 transition-colors"
+              onClick={closeMenu}
+            >
               Lokasi
             </a>
           </nav>
