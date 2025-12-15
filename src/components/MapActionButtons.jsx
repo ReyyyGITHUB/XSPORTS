@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MapActionButtons({
   mapsLink = "https://goo.gl/maps/6VDZ5qxG1Jw6m7er9",
-  sendToPhoneLink = "#",
+  sendToPhoneLink = "https://wa.me/6285799799857?text=Halo%20saya%20mau%20konsul",
   pickupNote = "Tersedia Ambil di Toko & Pesan Antar",
   contact = "0813-9133-2561",
 }) {
@@ -19,9 +19,9 @@ export default function MapActionButtons({
         </a>
         <a
           href={sendToPhoneLink}
-          className="inline-flex items-center justify-center rounded-full border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 transition"
+          className="inline-flex items-center justify-center rounded-full border border-green-200 px-4 py-2 text-sm font-semibold text-green-700 hover:bg-green-50 transition"
         >
-          Kirim ke Ponsel
+          Simpan via WhatsApp
         </a>
         <a
           href={`tel:${contact}`}

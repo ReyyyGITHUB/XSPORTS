@@ -2,6 +2,7 @@ import React from "react";
 import BadgeHero from "./components/BadgeHero";
 import CardBenefit from "./components/CardBenefit";
 import ContactWa from "./components/ContactWa";
+import Reveal from "./components/Reveal";
 
 export default function BenefitSection() {
   const benefits = [
@@ -51,30 +52,32 @@ export default function BenefitSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 w-full">
-          {benefits.map((item) => (
-            <CardBenefit
-              key={item.title}
-              image={item.image}
-              title={item.title}
-              desc={item.desc}
-            />
-          ))}
+        <div className="w-full mt-8">
+          <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible">
+            {benefits.map((item, idx) => (
+              <Reveal
+                key={item.title}
+                className="min-w-[260px] md:min-w-0"
+                direction={idx % 2 === 0 ? "left" : "right"}
+                delay={idx * 40}
+              >
+                <CardBenefit image={item.image} title={item.title} desc={item.desc} />
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="mt-8 w-full">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-5 shadow-sm">
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold text-gray-900">
-                Butuh rekomendasi size?
-              </h3>
+            <Reveal className="flex-1" direction="left">
+              <h3 className="text-lg font-semibold text-gray-900">Butuh rekomendasi size?</h3>
               <p className="text-sm text-gray-700">
                 Konsultasi langsung dengan admin sebelum checkout biar ukuran pas.
               </p>
-            </div>
-            <div className="w-full md:w-auto">
+            </Reveal>
+            <Reveal className="w-full md:w-auto" direction="right">
               <ContactWa />
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

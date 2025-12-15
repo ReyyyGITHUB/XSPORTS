@@ -1,19 +1,28 @@
 import React from "react";
 
-export default function ButtonMain({ placeholder, type = "primary" }) {
+export default function ButtonMain({ placeholder, type = "primary", href, onClick }) {
   const baseStyle =
     "flex justify-center items-center rounded-md py-4 px-4 w-full text-base font-semibold transition";
-  const primaryStyle = "bg-[#5DADE2] text-white hover:bg-[#4c99cd]";
+  const primaryStyle = "bg-[#1f6bff] text-white hover:bg-[#1554c4] shadow-md";
   const secondaryStyle =
-    "bg-white text-[#5DADE2] border border-[#5DADE2] hover:bg-[#e9f4fb]";
+    "bg-white text-[#1f6bff] border border-[#1f6bff] hover:bg-[#e6f0ff]";
   const buttonStyle =
     type === "secondary"
       ? `${baseStyle} ${secondaryStyle}`
       : `${baseStyle} ${primaryStyle}`;
 
+  const Component = href ? "a" : "button";
+
   return (
-    <button type="button" className={buttonStyle}>
+    <Component
+      href={href}
+      target={href ? "_blank" : undefined}
+      rel={href ? "noreferrer" : undefined}
+      type={href ? undefined : "button"}
+      className={buttonStyle}
+      onClick={onClick}
+    >
       {placeholder}
-    </button>
+    </Component>
   );
 }

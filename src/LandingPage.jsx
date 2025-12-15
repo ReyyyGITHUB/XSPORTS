@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import BadgeHero from "./components/BadgeHero";
 import CategoryDropdown from "./components/CategoryDropdown";
@@ -11,6 +11,7 @@ import TestimoniSection from "./TestimoniSection";
 import MapsSections from "./MapsSections";
 import PromoSection from "./PromoSection";
 import FooterSection from "./Footer";
+import Reveal from "./components/Reveal";
 
 export default function LandingPage() {
   const categories = [
@@ -20,6 +21,13 @@ export default function LandingPage() {
     "Casual",
     "Aksesoris",
   ];
+  const [productCategory, setProductCategory] = useState("Semua");
+  const [productSearch, setProductSearch] = useState("");
+
+  const scrollToProducts = () => {
+    const el = document.querySelector("#products");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="scroll-smooth">
@@ -27,15 +35,20 @@ export default function LandingPage() {
 
       <main
         id="home"
-        className="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white pt-28 pb-16 px-4"
+        className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white pt-28 pb-16 px-4"
       >
-        <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/assets/hero-pattern.png')] bg-cover bg-center opacity-20 mix-blend-screen" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_25%),radial-gradient(circle_at_80%_0%,rgba(16,185,129,0.08),transparent_25%)]" />
+        </div>
+        <section className="relative overflow-hidden">
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-12 relative z-10">
-            <BadgeHero title={"Marketplace Sepatu Original"} />
+            <Reveal direction="down">
+              <BadgeHero title={"Marketplace Sepatu Original"} />
+            </Reveal>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              <div className="flex flex-col gap-6">
+              <Reveal className="flex flex-col gap-6" direction="left">
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                   Cari Sepatu Idaman,{" "}
                   <span className="text-blue-400">Gas Checkout!</span>
@@ -45,10 +58,20 @@ export default function LandingPage() {
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <div className="w-full md:w-auto md:min-w-[180px]">
-                    <ButtonMain placeholder={"Belanja Sekarang"} />
+                    <ButtonMain
+                      placeholder={"Belanja Sekarang"}
+                      href="https://shopee.co.id/radhian99?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnO9Jm_aNal34FqapdBo1tVRX3dKLoz20hFHFwDTz7qcEe235PedN11LZ-TRk_aem_rgrVtdlBUT0ZeQUdNBDX4w&uls_trackid=54e9m26401e5&utm_content=3oM6USyZTVmcpFNvWXAUVUidPV11"
+                    />
                   </div>
                   <div className="w-full md:w-auto md:min-w-[160px]">
-                    <ButtonMain placeholder={"Lihat Produk"} type="secondary" />
+                    <ButtonMain
+                      placeholder={"Lihat Sekarang"}
+                      type="secondary"
+                      onClick={() => {
+                        const el = document.querySelector("#products");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    />
                   </div>
                 </div>
 
@@ -74,13 +97,29 @@ export default function LandingPage() {
                     accent="#A855F7"
                   />
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="flex flex-col gap-4 bg-white/5 border border-white/10 backdrop-blur rounded-2xl p-5 shadow-lg">
+              <Reveal
+                className="flex flex-col gap-4 bg-white/5 border border-white/10 backdrop-blur rounded-2xl p-5 shadow-lg"
+                direction="right"
+              >
                 <span className="text-sm text-gray-300">Cari cepat</span>
-                <CategoryDropdown categories={categories} />
-                <Searchbar placeholder={"Cari sepatu / brand / ukuran"} />
-              </div>
+                <CategoryDropdown
+                  categories={["Semua", ...categories]}
+                  value={productCategory}
+                  onSelect={(cat) => {
+                    setProductCategory(cat);
+                    scrollToProducts();
+                  }}
+                />
+                <Searchbar
+                  placeholder={"Cari sepatu / brand / ukuran"}
+                  onSearch={(term) => {
+                    setProductSearch(term);
+                    scrollToProducts();
+                  }}
+                />
+              </Reveal>
             </div>
           </div>
         </section>
@@ -88,7 +127,10 @@ export default function LandingPage() {
 
       <section className="bg-white">
         <BenefitSection />
-        <ProductSection />
+        <ProductSection
+          selectedCategory={productCategory}
+          searchTerm={productSearch}
+        />
         <TestimoniSection />
         <MapsSections />
         <PromoSection />

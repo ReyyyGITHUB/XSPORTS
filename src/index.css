@@ -3,3 +3,14 @@
 html {
   scroll-behavior: smooth;
 }
+
+.reveal {
+  opacity: 0;
+  transform: var(--reveal-transform, translateY(24px)) scale(0.99);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

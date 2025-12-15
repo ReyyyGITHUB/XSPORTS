@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import BadgeHero from "./components/BadgeHero";
 import CardProduct, { products } from "./components/CardProduct";
 import CategoryButton from "./components/CategoryButton";
+import Reveal from "./components/Reveal";
 
-export default function ProductSection() {
+export default function ProductSection({ selectedCategory = "Semua", searchTerm = "" }) {
+  const [activeCategory, setActiveCategory] = useState(selectedCategory);
+  const [term, setTerm] = useState(searchTerm);
+
+  useEffect(() => {
+    setActiveCategory(selectedCategory);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    setTerm(searchTerm);
+  }, [searchTerm]);
+
   const categories = [
     "Semua",
     "Sepatu Bola",
@@ -12,6 +24,17 @@ export default function ProductSection() {
     "Casual",
     "Aksesoris",
   ];
+
+  const filtered = useMemo(() => {
+    return products.filter((p) => {
+      const matchCat = activeCategory === "Semua" || p.category === activeCategory;
+      const matchTerm =
+        term.trim() === "" ||
+        p.title.toLowerCase().includes(term.toLowerCase()) ||
+        p.category.toLowerCase().includes(term.toLowerCase());
+      return matchCat && matchTerm;
+    });
+  }, [activeCategory, term]);
 
   return (
     <section id="products" className="w-full py-12">
@@ -28,14 +51,25 @@ export default function ProductSection() {
         <div className="flex w-full items-center gap-2 justify-start sm:justify-center overflow-x-auto pb-2">
           {categories.map((cat, idx) => (
             <div key={cat} className="w-auto min-w-[140px] flex-shrink-0">
-              <CategoryButton label={cat} active={idx === 0} />
+              <CategoryButton
+                label={cat}
+                active={cat === activeCategory}
+                onClick={() => setActiveCategory(cat)}
+              />
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 w-full">
-          {products.map((product) => (
-            <CardProduct key={product.title} {...product} />
+          {filtered.map((product, idx) => (
+            <Reveal
+              key={product.title}
+              className="h-full"
+              delay={idx * 50}
+              direction={idx % 2 === 0 ? "up" : "right"}
+            >
+              <CardProduct {...product} />
+            </Reveal>
           ))}
         </div>
       </div>

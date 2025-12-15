@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const toggleMenu = () => setOpen((prev) => !prev);
+  const closeMenu = () => setOpen(false);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-20 bg-white/90 backdrop-blur shadow-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3">
@@ -30,7 +35,10 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50">
+          <button
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 hover:bg-gray-50"
+            onClick={toggleMenu}
+          >
             <span className="sr-only">Toggle menu</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,11 +47,38 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              />
             </svg>
           </button>
         </div>
       </div>
+
+      {open && (
+        <div className="md:hidden bg-white/95 backdrop-blur shadow-lg border-t border-gray-100">
+          <nav className="flex flex-col gap-3 px-6 py-4 text-sm font-medium text-gray-800">
+            <a href="#home" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+              Home
+            </a>
+            <a href="#benefits" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+              Kenapa Kami
+            </a>
+            <a href="#products" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+              Produk
+            </a>
+            <a href="#testimoni" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+              Testimoni
+            </a>
+            <a href="#lokasi" className="hover:text-blue-600 transition-colors" onClick={closeMenu}>
+              Lokasi
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

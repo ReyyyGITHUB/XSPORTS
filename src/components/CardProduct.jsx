@@ -11,6 +11,7 @@ export const products = [
     sizes: ["41", "42", "43", "44"],
     badgeText: "Best Seller",
     badgeTone: "emerald",
+    category: "Sepatu Bola",
   },
   {
     image: "/vite.svg",
@@ -21,6 +22,7 @@ export const products = [
     sizes: ["39", "40", "41", "42"],
     badgeText: "Diskon",
     badgeTone: "red",
+    category: "Futsal",
   },
   {
     image: "/vite.svg",
@@ -31,6 +33,7 @@ export const products = [
     sizes: ["40", "41", "42", "43"],
     badgeText: "Baru",
     badgeTone: "blue",
+    category: "Running",
   },
   {
     image: "/vite.svg",
@@ -41,6 +44,7 @@ export const products = [
     sizes: ["39", "40", "41", "42"],
     badgeText: "Best Seller",
     badgeTone: "emerald",
+    category: "Casual",
   },
   {
     image: "/vite.svg",
@@ -51,6 +55,7 @@ export const products = [
     sizes: ["40", "41", "42", "43"],
     badgeText: "Baru",
     badgeTone: "blue",
+    category: "Running",
   },
   {
     image: "/vite.svg",
@@ -61,6 +66,7 @@ export const products = [
     sizes: ["39", "40", "41", "42"],
     badgeText: "Diskon",
     badgeTone: "red",
+    category: "Futsal",
   },
 ];
 
